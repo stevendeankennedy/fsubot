@@ -8,11 +8,11 @@ public class SteveKHandler extends ListenerAdapter{
     public void onMessageReceived(MessageReceivedEvent event) {
         // Cancel this action if the author was the bot,
         // or cancel if the message didn't start with our command character.
-        if (event.getAuthor().isBot()) {
+        if (event.getAuthor().isBot() || !event.getMessage().getContentRaw().startsWith("$")) {
             return;
         }
         String message = event.getMessage().getContentRaw();
-        if(message.contains("%hack")) {
+        if(message.equals("hackSteve")) {
             event.getChannel().sendMessage("Hacked Steve's account!");
         }
     }
